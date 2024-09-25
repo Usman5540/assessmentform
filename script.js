@@ -116,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             form.innerHTML += questionHTML;
         });
 
-document.getElementById('generatePDFButton').addEventListener('click', generatePDF);
-document.getElementById('submitButton').addEventListener('click', calculateScore);
 
 document.getElementById('submitButton').addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default form submission
