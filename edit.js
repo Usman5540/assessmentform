@@ -1,4 +1,4 @@
-
+//
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from the server and populate dropdown
     fetch('https://html-dynamic-tool.vercel.app/api/data')
@@ -26,6 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => console.error('Error fetching data:', error));
+});
+// for question deletion 
+document.getElementById('deleteButton').addEventListener('click', (e) => {
+    console.log(e)
+    const selectedId = document.getElementById('questionDropdown').value;
+
+    if (selectedId) {
+        // Send request to delete the question
+        fetch(`https://html-dynamic-tool.vercel.app/${selectedId}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert('Question deleted successfully!');
+                // Optionally refresh or update the dropdown
+                location.reload();
+            } else {
+                alert('Failed to delete question.');
+            }
+        })
+        .catch(error => console.error('Error deleting question:', error));
+    } else {
+        alert('Please select a question to delete.');
+    }
 });
 
 // Handle question update

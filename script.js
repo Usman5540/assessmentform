@@ -1,13 +1,13 @@
 import { generatePDF } from "./generatePDF.js";
 
-
+//
 let query = {};
 let questions = {};
 let ratingText = {
     "1": "Strongly Disagree",
     "2": "Disagree",
     "3": "Somewhat Disagree",
-    "4": "Neither Agree nor Disagree",
+    "4": "Neither Agree<br>nor Disagree",
     "5": "Somewhat Agree",
     "6": "Agree",
     "7": "Strongly Agree"
@@ -116,13 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
             form.innerHTML += questionHTML;
         });
 
+document.getElementById('generatePDFButton').addEventListener('click', generatePDF);
+document.getElementById('submitButton').addEventListener('click', calculateScore);
+
 document.getElementById('submitButton').addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    const providerIdentifier = document.getElementById('identifier').value;
-    const raterIdentifier = document.getElementById('Rater').value;
 
-  
 
     // Call validation function
     const formValid = validateForm(); 
@@ -134,13 +134,14 @@ document.getElementById('submitButton').addEventListener('click', (event) => {
         return; // Stop further execution if the form is invalid
     }
       // Check if both identifiers are filled
-    if (!providerIdentifier || !raterIdentifier) {
-        alert('Please fill out both the Provider and Rater Identifiers.');
-        return; // Stop further execution if identifiers are missing
-    }
+  
 
     // If both identifiers are filled and form is valid, calculate score
     calculateScore();
+
+      setTimeout(() => {
+        document.getElementById('generatePDFButton').style.display = 'inline-block';
+    }, 2000); // Delay of 2000ms (2 seconds)
 });
 
 document.getElementById('generatePDFButton').addEventListener('click', generatePDF);
@@ -177,6 +178,14 @@ function getUnansweredQuestions() {
 
     return unanswered;
 }
+document.getElementById('Rater').addEventListener('click', function() {
+  this.style.boxShadow = 'none'; // Remove the shadow on click
+
+});
+
+document.getElementById('identifier').addEventListener('click', function() {
+  this.style.boxShadow = 'none'; // Remove the shadow on click
+});
 
 function calculateScore() {
     document.getElementById("spinner").style.display = "block";
@@ -212,18 +221,21 @@ function calculateScore() {
         const strengths = sortedAnswers.slice(0, 2).map(([key]) => {
             const question = questions[key];
             // Fixed rounding logic to correctly map values to ratings
-            return `${question}: ${ratingText[Math.round((answers[key] / 33.33) + 4)]}`;  // Correction: Ensured rounding works properly
+            return `${question}: ${AnswerText[Math.round((answers[key] / 33.33) + 4)]}`;  // Correction: Ensured rounding works properly
         });
         
         const weaknesses = sortedAnswers.slice(-2).map(([key]) => {
             const question = questions[key];
             // Fixed rounding logic to correctly map values to ratings
-            return `${question}: ${ratingText[Math.round((answers[key] / 33.33) + 4)]}`;  // Correction: Ensured rounding works properly
+            return `${question}: ${AnswerText[Math.round((answers[key] / 33.33) + 4)]}`;  // Correction: Ensured rounding works properly
         });
 
         document.getElementById("strengths").innerText = strengths.join('\n');
         document.getElementById("weaknesses").innerText = weaknesses.join('\n');
-
+        //  document.getElementById("feedback-container").style.display = 'block';
+          // Show feedback and chart containers
+        document.querySelector('.feedback-container').style.display = 'block';
+        document.querySelector('.chart-container').style.display = 'block';
         // Display bar chart
         const barChart = document.getElementById("barChart");
         const elementPosition = barChart.getBoundingClientRect().top + window.scrollY;

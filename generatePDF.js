@@ -11,15 +11,14 @@ function generatePDF() {
     // First Page: Title, Score, Identifier, and Feedback Box
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("Testimonial Readiness Assessment - Physicians (TRA-P)", 20,10);
+    doc.text("Testimonial Readiness Assessment Score", 37,10);
     //   doc.setFont("helvetica", "bold");
-     doc.setFontSize(16);
+     doc.setFontSize(15);
      doc.text("Data Output and Assessment Scores", 10, 30);
 
- 
     const Identifier = document.getElementById("identifier").value;
    const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
-doc.setFontSize(16);
+doc.setFontSize(15);
 doc.setTextColor(0, 0, 0);
 doc.text(`Rater Name or Identifier: ${rater}`, 10,56); // Add the Rater value into the PDF
 
@@ -31,22 +30,22 @@ doc.text(`Rater Name or Identifier: ${rater}`, 10,56); // Add the Rater value in
         month: "long",
         day: "numeric"
     });
-        doc.setFontSize(16);
+        doc.setFontSize(15);
     doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 47);
-        doc.setFontSize(16);
+        doc.setFontSize(15);
     doc.text(`Assessment Date: ${formattedDate}`, 10, 38);
    doc.setFontSize(16); // Set the font size
 doc.setTextColor(0, 48, 143); // Set the text color
-doc.text("Testimonial Readiness Assessment Score:", 11, 67); // Add the text
+doc.text("Testimonial Readiness Assessment Score:", 12, 87); // Add the text
 
 
 const scoreString = document.getElementById("score").innerText;
 let score = scoreString.split('is')[1];
- const padding =30
+ const padding =9
 // Define the position and dimensions of the rounded box
 const x = 8;
-const y = 60;
-const width = 180; // Adjust width as needed
+const y = 80;
+const width = 184; // Adjust width as needed
 const height = 20+padding; // Adjust height as needed
 const radius = 5; // Radius of the rounded corners
 
@@ -59,33 +58,41 @@ doc.roundedRect(x, y, width, height, radius, radius,'D'); // Fill and draw
 
 
 // Add the text inside the rounded rectangle
- doc.setFontSize(13);
+ doc.setFontSize(14);
  doc.setTextColor(0, 48, 143)
-doc.text("Your provider's overall testimonial readiness score is:", x + 5, y + 45); // Adjust text position as needed
+doc.text("Your provider's overall testimonial readiness score is:", x + 5, y + 24); // Adjust text position as needed
 
-    doc.setFontSize(18);
+    doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(200, 0, 0);
-    doc.text(` ${score}`, 131, 105);
+    doc.text(` ${score}`, 141, 104);
     doc.getTextWidth(score);
     // Draw the underline
     const textWidth = doc.getTextWidth(score);
 
 // Add an underline
-
-const offset =4;
-const underlineY = 107; // Adjust the Y position for the underline
+// add something new  h
+const offset =14;
+const underlineY = 106; // Adjust the Y position for the underline
  doc.setDrawColor(200, 0, 0);
-doc.line(130 +offset , underlineY, 130 + textWidth+3, underlineY);
+doc.line(130 +offset , underlineY, 130 + textWidth+12, underlineY);
 
-doc.setTextColor(0, 0, 0);
-doc.setFontSize(25)
-doc.setTextColor(0, 45, 98)
-doc.text(" out of 10", 145, 105);
+doc.setFontSize(14);
+ doc.setTextColor(0, 48, 143)
+doc.text(" out of", 152, 104);
+
+doc.setTextColor(200, 0, 0);  // Red color (RGB)
+doc.setFontSize(14);
+// Write "10" after the "out of"
+doc.text("10", doc.getTextWidth("out of ") + 154, 104);
 // doc.setDrawColor(200, 0, 0); // Set the underline color (black or any color you want)
+// doc.setFontSize(13);
+//  doc.setDrawColor(200, 0, 0);
+// doc.text("10", 150, 105);
 // doc.line(130, 107,130 + scoreWidth, 107); // Draw the underline (y + 2 for offset)
     
     doc.setFontSize(18);
+    doc.setTextColor(0, 48, 143)
     doc.text("Strengths and Weaknesses:", 11, 133);
 
 
@@ -114,7 +121,7 @@ const mainWeaknessesTitle = 'Main Weaknesses (bottom two scores):';
 // Set the Y position for Main Weaknesses title
 const weaknessesTitleY = strengthsYPosition + 10; // Minimal space after strengths content
 doc.text(mainWeaknessesTitle, 10, weaknessesTitleY); // Draw the Main Weaknesses title
-
+// apk file is here running 
 // Print weaknesses (with minimal space between heading and descriptions)
 const weaknesses = document.getElementById("weaknesses").innerText.split('\n');
 doc.setFontSize(12); // Font size for weakness items
@@ -130,12 +137,11 @@ const boxPadding = 10; // Padding around the content
 // Adjust box width and X position to decrease width from the right
 const decreaseAmount = 3; // Amount to decrease the width by
 const boxX = 5 + decreaseAmount; // Shift X position to the right
-const boxWidth = 191 ; // Decrease the width of the box
-const decreaseHeightFromBottom = 5; // Amount to decrease height from the bottom
+const boxWidth = 188 - decreaseAmount; // Decrease the width of the box
 
 // Increase the box height towards the top
 const boxY = topStrengthsY - 25; // Y position for the box
-const boxHeight = weaknessesYPosition - topStrengthsY + boxPadding * 3- decreaseHeightFromBottom; // Height to cover the entire content
+const boxHeight = weaknessesYPosition - topStrengthsY + boxPadding * 3; // Height to cover the entire content
 
 const boxRadius = 5; // Radius of the rounded corners
 
@@ -196,38 +202,37 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
                 doc.setFontSize(18);
                 doc.setFont("helvetica", "bold");
                  doc.setTextColor(0, 0, 0);
-                doc.text("Testimonial Readiness Assessment - Physicians (TRA-P)", 20, 17);
+                doc.text("Testimonial Readiness Assessment Score", 37, 12);
                 doc.setFontSize(14);
                 const Identifier = document.getElementById("identifier").value;
-         doc.setTextColor(0, 0, 0);
-        doc.setFontSize(16);
+                     doc.setTextColor(0, 0, 0);
+          doc.setFontSize(15);
         doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 40);
-        doc.setFontSize(16);
-   const scoreString = document.getElementById("score").innerText;
-        let score = scoreString.split('is')[1];
-     doc.setFontSize(16);
-     doc.setTextColor(0, 0, 0);
-     doc.text("Your provider's overall testimonial readiness score is:", 10, 60);
-    doc.setFontSize(16);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(200, 0, 0);
-    doc.text(`${score}`, 155, 60);
-      // Draw the underline
-    const textWidth = doc.getTextWidth(score);
+//         const scoreString = document.getElementById("score").innerText;
+//         let score = scoreString.split('is')[1];
+//      doc.setFontSize(16);
+//      doc.setTextColor(0, 0, 0);
+//      doc.text("Your provider's overall testimonial readiness score is:", 10, 60);
+//     doc.setFontSize(16);
+//     doc.setFont("helvetica", "bold");
+//     doc.setTextColor(200, 0, 0);
+//     doc.text(`${score}`, 155, 60);
+//       // Draw the underline
+//     const textWidth = doc.getTextWidth(score);
 
-// Add an underline
-doc.setLineWidth(1)
-const underlineY = 63; // Adjust the Y position for the underline
- doc.setDrawColor(200, 0, 0);
-doc.line(157 , underlineY, 155 + textWidth, underlineY);
+// // Add an underline
+// doc.setLineWidth(1)
+// const underlineY = 63; // Adjust the Y position for the underline
+//  doc.setDrawColor(200, 0, 0);
+// doc.line(157 , underlineY, 155 + textWidth, underlineY);
 
-doc.setTextColor(0, 48, 143); // Blue border color
-doc.setFontSize(23);
+// doc.setTextColor(0, 48, 143); // Blue border color
+// doc.setFontSize(23);
   
-    doc.text(" out of 10", 167, 60);
+//     doc.text(" out of 10", 167, 60);
     // Get today's date 
-       const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
-doc.setFontSize(18);
+ const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
+doc.setFontSize(15);
 doc.setTextColor(0, 0, 0);
 doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value into the PDF
     const today = new Date();
@@ -236,11 +241,13 @@ doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value in
         month: "long",
         day: "numeric"
     });
-    
+    doc.setFontSize(15);
+
     doc.text(`Assessment Date: ${formattedDate}`, 10, 30);
-                doc.setFont("helvetica", "bold");
-                doc.setTextColor(0, 48, 143)
-                doc.text("Sub-scale-continuous:", 10, 69);
+                
+                doc.setTextColor(0, 0, 0)
+                doc.setFontSize(14)
+                doc.text("Sub-scales(continued):", 10, 69);
                 
 
     // Create axis
@@ -278,8 +285,8 @@ doc.setFontSize(18);
 doc.setTextColor(0, 0, 0);
 doc.setFont("helvetica", "bold");
 
-const title = "Testimonial Readiness Assessment - Physicians (TRA-P)";
-const subtitle = "Questions Answers";
+const title = "Testimonial Readiness Assessment Score";
+const subtitle = "Rater Scores Raw Data";
 const titleWidth = doc.getTextWidth(title);
 const subtitleWidth = doc.getTextWidth(subtitle);
 
@@ -336,14 +343,32 @@ doc.text(subtitle, (pageWidth - subtitleWidth) / 2, subtitleYPosition);
                 // Add a new page if needed and start the remaining image
                 if (remainingHeight > 0) {
                     doc.addPage();
-                    yPosition =3; // Reset Y position for the new page
+                    yPosition = 7; // Reset Y position for the new page
 
                     // Add the remaining part of the assessment form image
                     addImageToPDF(startCropY, remainingHeight);
                     remainingHeight = 0; // All remaining image has been added
                 }
+// Get today's date dynamically and format it for the filename
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "2-digit", // Change to "2-digit" for consistent formatting
+        day: "2-digit"
+    }).replace(/\//g, "-"); // Replace slashes with hyphens
 
-                doc.save("assessment.pdf");
+    // Retrieve the Identifier
+    const identifier = document.getElementById("identifier").value;
+
+    // Construct the filename
+    const instrumentName = "Testimonial Readiness Assessment - Physicians (TRA-P)"; // Use your actual instrument name
+    const filename = `${instrumentName}.${identifier}.${formattedDate}.pdf`;
+
+    // Your existing code for PDF content...
+
+    // At the end, save the PDF with the new filename
+    doc.save(filename); // Use the constructed filename
+                
             });
         });
     
