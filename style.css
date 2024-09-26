@@ -6,23 +6,20 @@ body {
 
   justify-content: center;
   align-items: center;
-
+ 
 }
-
 #Rater {
   margin-left: 42px;
   /* Adjust the value as needed */
-  box-shadow: 0px -15px 0px 0px #e0f7fa inset;
-  /* Light blue above */
-  /* padding-top: 30px; */
-  /* Adjust padding to move the text input lower */
+    box-shadow: 0px -15px 0px 0px #e0f7fa inset;
+      /* Light blue above */
+      /* padding-top: 30px; */
+      /* Adjust padding to move the text input lower */
 }
-
-#identifier {
-  box-shadow: 0px -15px 0px 0px #e0f7fa inset;
+#identifier{
+box-shadow: 0px -15px 0px 0px #e0f7fa inset;
 
 }
-
 /* Container for the assessment */
 .identifier {
   margin-bottom: 20px;
@@ -43,7 +40,7 @@ body {
 .assessment-input {
   border: none;
   border-bottom: 2px solid black;
-  max-width: 160px;
+  max-width:160px;
   font-size: 16px;
   outline: none;
   height: 30px;
@@ -52,10 +49,8 @@ body {
 }
 
 .assessment-input:focus {
-  border-bottom: 2px solid blue;
-  /* Optional for a focused state */
+  border-bottom: 2px solid blue; /* Optional for a focused state */
 }
-
 .assessment-container {
   background: #ffffff;
   border-radius: 10px;
@@ -94,29 +89,26 @@ body {
 .assessment-instructions strong {
   color: #000;
 }
-
 .trapForm {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
+background: #ffffff;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+padding: 30px;
+width: 90%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20px;
 }
-
-.buttonForm {
-  background: #ffffff;
-  border-radius: 0px 0px 0px 0px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  border-top: 0px;
+.buttonForm{
+background: #ffffff;
+border-radius: 0px 0px 0px 0px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+padding: 30px;
+width: 90%;
+margin-left: auto;
+margin-right: auto;
+border-top: 0px;
 }
-
 .question {
   margin-bottom: 20px;
 }
@@ -133,12 +125,11 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
   text-align: center;
   padding: 10px;
   width: auto;
-
+ 
 }
 
 th {
@@ -156,43 +147,39 @@ td label {
 td input {
   margin-right: 5px;
 }
-
 /* .radio-label{
   display: flex;
   flex-direction: column;
   width: 20px;
 } */
-td label {
-  display: flex;
-  justify-content: center;
-  /* Centers the label content */
-  align-items: center;
-  width: 100%;
-}
-
+ td label {
+   display: flex;
+   justify-content: center;
+   /* Centers the label content */
+   align-items: center;
+   width: 100%;
+ }
 .radio-label span {
   display: block;
   font-size: 14px;
   color: #666;
 }
-
 /* .radioDiv{
   display: flex;
   flex-direction: column;
   height: 60px;
 } */
-.radioDiv {
-  display: flex;
-  justify-content: space-evenly;
+ .radioDiv {
+   display: flex;
+   justify-content: space-evenly;
   flex-direction: column;
-  /* Ensures equal spacing between the radio buttons */
-  align-items: center;
-  width: 100%;
-  /* Ensures full width */
-  height: 60px;
-}
-
-.radioDiv span {
+   /* Ensures equal spacing between the radio buttons */
+   align-items: center;
+   width: 100%;
+   /* Ensures full width */
+   height: 60px;
+ }
+.radioDiv span{
   margin-top: 5px;
   display: block;
   font-size: 14px;
@@ -213,7 +200,6 @@ input[type="radio"]:focus {
   outline: none;
   border-color: #0066cc;
 }
-
 button {
   background-color: #2a9d8f;
   color: #ffffff;
@@ -232,7 +218,6 @@ button:hover {
 button:active {
   background-color: #1b695f;
 }
-
 /* .score {
   font-weight: bold;
 }
@@ -254,6 +239,7 @@ button:active {
 /* Styling for the score section */
 .score {
   font-family: 'Arial', sans-serif;
+  font-weight: bold;
   font-size: 1.2rem;
   color: #333;
   margin: 20px 0;
@@ -262,8 +248,7 @@ button:active {
 
 .score span {
   font-weight: bold;
-  color: #007bff;
-  /* Blue color for score number */
+  color: #333;
 }
 
 /* Feedback section */
@@ -285,43 +270,38 @@ button:active {
 }
 
 /* Styling for strengths and weaknesses */
-#strengths,
-#weaknesses {
+#strengths, #weaknesses {
   font-size: 1rem;
   color: #666;
   padding-left: 10px;
-  border-left: 4px solid #28a745;
-  /* Green border for strengths */
+  border-left: 4px solid #28a745; /* Green border for strengths */
 }
 
 #weaknesses {
-  border-left: 4px solid #dc3545;
-  /* Red border for weaknesses */
-}
+  border-left: 4px solid #dc3545; /* Red border for weaknesses */
+} 
 
 /* Spinner and Bar Chart Container */
 
-.spinner-container {
+.spinner-container{
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 150px 30px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   display: none;
 }
-
 /* Spinner styling */
 .spinner {
   display: flex;
   justify-content: center;
   align-items: center;
-
+   
 
 }
-
 .spinner div {
   width: 40px;
   height: 40px;
@@ -335,7 +315,6 @@ button:active {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -365,12 +344,9 @@ button:active {
   align-items: center;
   margin-bottom: 30px;
   position: relative;
-  height: 25px;
-  /* Adjusted height */
-  background-color: #e9ecef;
-  /* Light background for the bar */
-  border-radius: 12px;
-  /* Rounded corners */
+  height: 25px; /* Adjusted height */
+  background-color: #e9ecef; /* Light background for the bar */
+  border-radius: 12px; /* Rounded corners */
   overflow: hidden;
 }
 
@@ -429,8 +405,7 @@ button:active {
   font-weight: bold;
   color: #495057;
 }
-
-.spanQuerry {
+.spanQuerry{
   display: block;
   width: 100%;
   text-align: center;
@@ -438,19 +413,16 @@ button:active {
 
 @media (max-width: 768px) {
   .chart-container {
-    width: 90%;
-    /* More responsive width */
-    padding: 30px;
+      width: 90%; /* More responsive width */
+      padding: 30px;
   }
-
+  
   .bar span {
-    font-size: 12px;
-    /* Adjust font size for smaller screens */
+      font-size: 12px; /* Adjust font size for smaller screens */
   }
 
   .axis span {
-    font-size: 12px;
-    /* Adjust axis font size */
+      font-size: 12px; /* Adjust axis font size */
   }
 }
 
@@ -459,15 +431,12 @@ button:active {
   height: 15px;
   margin-bottom: 30px;
   margin-top: 15px;
-  position: relative;
-  /* Ensures correct positioning of inner div */
-  overflow: hidden;
-  /* Hides overflow to keep bars contained */
+  position: relative; /* Ensures correct positioning of inner div */
+  overflow: hidden; /* Hides overflow to keep bars contained */
 }
 
 .bar div {
-  transition: width 1.5s cubic-bezier(0.42, 0, 0.58, 1);
-  /* Applies transition to width */
+  transition: width 1.5s cubic-bezier(0.42, 0, 0.58, 1); /* Applies transition to width */
   position: absolute;
   bottom: 0;
   height: 100%;
@@ -475,47 +444,36 @@ button:active {
 }
 
 .green {
-  background-color: #28a745;
-  border-radius: 12px;
-  /* Rounded corners */
+  background-color: #28a745; 
+  border-radius: 12px; /* Rounded corners */
 }
 
 .red {
-  background-color: #dc3545;
-  border-radius: 12px;
-  /* Rounded corners */
+  background-color: #dc3545; 
+  border-radius: 12px; /* Rounded corners */
 }
 
 .vertical-line {
-  height: 40px;
-  /* Adjust the height as needed */
+  height: 40px;  /* Adjust the height as needed */
   z-index: 1;
 }
-
-.right-span {
+.right-span{
   text-align: end;
 }
-
-.center-span.vertical-line {
+.center-span.vertical-line{
   text-align: center;
-  border-left: 2px solid #d3d3d3;
-  /* Vertical line thickness and color */
-
+  border-left: 2px solid #d3d3d3; /* Vertical line thickness and color */
+  
 }
-
-.left-span.vertical-line {
+.left-span.vertical-line{
   text-align: left;
-  border-left: 2px solid #d3d3d3;
-  /* Vertical line thickness and color */
+  border-left: 2px solid #d3d3d3; /* Vertical line thickness and color */
 }
-
-.right-span.vertical-line {
+.right-span.vertical-line{
   text-align: end;
-  border-right: 2px solid #d3d3d3;
-  /* Vertical line thickness and color */
+  border-right: 2px solid #d3d3d3; /* Vertical line thickness and color */
 }
-
-.spanQuerry {
+.spanQuerry{
   padding-bottom: 6px;
 }
 
@@ -529,6 +487,5 @@ button:active {
   background: linear-gradient(90deg, #dc3545 50%, #28a745 50%);
   z-index: 10;
 }
-
 /* 
  */
