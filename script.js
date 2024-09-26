@@ -365,9 +365,3 @@ function calculateScore() {
         }, 1000); // Slight delay to ensure the DOM is fully updated
 })       
     }
-
-
-
-
-
-
