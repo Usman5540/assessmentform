@@ -13,14 +13,35 @@ function generatePDF() {
     doc.setFont("helvetica", "bold");
     doc.text("Testimonial Readiness Assessment Score", 37,10);
     //   doc.setFont("helvetica", "bold");
-     doc.setFontSize(15);
+     doc.setFontSize(11);
      doc.text("Data Output and Assessment Scores", 10, 30);
 
     const Identifier = document.getElementById("identifier").value;
    const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
-doc.setFontSize(15);
+  doc.setFontSize(11);
 doc.setTextColor(0, 0, 0);
-doc.text(`Rater Name or Identifier: ${rater}`, 10,56); // Add the Rater value into the PDF
+const offset1 = 10;  // Position offset for the text
+const textY = 56;  // Y position for the text
+const underlineY1 = textY + 1; // Y position for the underline, slightly below the text
+
+// Add the text
+doc.text(`Rater Name / Identifier :`, offset1, textY);
+
+const staticTextWidth = doc.getTextWidth('Rater Name / Identifier:');
+const raterX = 17 + staticTextWidth
+doc.text(`${rater}`, raterX, textY);
+// Calculate the width of the text
+ doc.getTextWidth(`Rater Name or Identifier : ${rater}`);
+doc.setLineWidth(0.5);
+// Set the underline start and end positions based on the text width
+const underlineStartX = offset1 +  48;
+const underlineEndX = underlineStartX + 30;  // Extend the underline by 12 units after the text
+
+// Set the color for the underline
+doc.setDrawColor(0, 0, 0);
+
+// Draw the underline after the text
+doc.line(underlineStartX, underlineY1, underlineEndX, underlineY1);
 
     // Get today's date dynamically
    
@@ -30,9 +51,27 @@ doc.text(`Rater Name or Identifier: ${rater}`, 10,56); // Add the Rater value in
         month: "long",
         day: "numeric"
     });
-        doc.setFontSize(15);
-    doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 47);
-        doc.setFontSize(15);
+    doc.setFontSize(11);
+    // doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 47);
+    const offset2 = 10;  // Position offset for the text
+const textY2 = 47;  // Y position for the text
+const underlineY2 = 48 ; // Y position for the underline, slightly below the text
+
+// Add the text
+doc.text(`Provider Name / Identifier: ${Identifier}`, offset2, textY2);
+// Calculate the width of the text
+const textWidth2 = doc.getTextWidth(`Provider Name or Identifier: ${Identifier}`);
+doc.setLineWidth(0.5);
+// Set the underline start and end positions based on the text width
+const underlineStartX2 = offset2 + 48;
+const underlineEndX2 = underlineStartX2 + 30;  // Extend the underline by 12 units after the text
+
+// Set the color for the underline
+doc.setDrawColor(0, 0, 0);
+
+// Draw the underline after the text
+doc.line(underlineStartX2, underlineY2, underlineEndX2, underlineY2);
+        doc.setFontSize(11);
     doc.text(`Assessment Date: ${formattedDate}`, 10, 38);
    doc.setFontSize(16); // Set the font size
 doc.setTextColor(0, 48, 143); // Set the text color
@@ -43,9 +82,9 @@ const scoreString = document.getElementById("score").innerText;
 let score = scoreString.split('is')[1];
  const padding =9
 // Define the position and dimensions of the rounded box
-const x = 8;
+const x = 9;
 const y = 80;
-const width = 184; // Adjust width as needed
+const width = 187; // Adjust width as needed
 const height = 20+padding; // Adjust height as needed
 const radius = 5; // Radius of the rounded corners
 
@@ -137,7 +176,7 @@ const boxPadding = 10; // Padding around the content
 // Adjust box width and X position to decrease width from the right
 const decreaseAmount = 3; // Amount to decrease the width by
 const boxX = 5 + decreaseAmount; // Shift X position to the right
-const boxWidth = 188 - decreaseAmount; // Decrease the width of the box
+const boxWidth = 192 - decreaseAmount; // Decrease the width of the box
 
 // Increase the box height towards the top
 const boxY = topStrengthsY - 25; // Y position for the box
@@ -203,10 +242,10 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
                 doc.setFont("helvetica", "bold");
                  doc.setTextColor(0, 0, 0);
                 doc.text("Testimonial Readiness Assessment Score", 37, 12);
-                doc.setFontSize(14);
+                doc.setFontSize(11);
                 const Identifier = document.getElementById("identifier").value;
                      doc.setTextColor(0, 0, 0);
-          doc.setFontSize(15);
+          doc.setFontSize(11);
         doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 40);
 //         const scoreString = document.getElementById("score").innerText;
 //         let score = scoreString.split('is')[1];
@@ -232,7 +271,7 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
 //     doc.text(" out of 10", 167, 60);
     // Get today's date 
  const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
-doc.setFontSize(15);
+doc.setFontSize(11);
 doc.setTextColor(0, 0, 0);
 doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value into the PDF
     const today = new Date();
@@ -241,12 +280,12 @@ doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value in
         month: "long",
         day: "numeric"
     });
-    doc.setFontSize(15);
+    doc.setFontSize(11);
 
     doc.text(`Assessment Date: ${formattedDate}`, 10, 30);
                 
                 doc.setTextColor(0, 0, 0)
-                doc.setFontSize(14)
+                doc.setFontSize(11)
                 doc.text("Sub-scales(continued):", 10, 69);
                 
 
