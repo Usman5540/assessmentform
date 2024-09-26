@@ -34,7 +34,7 @@ document.getElementById('deleteButton').addEventListener('click', (e) => {
 
     if (selectedId) {
         // Send request to delete the question
-        fetch(`https://html-dynamic-tool.vercel.app/${selectedId}`, {
+        fetch(`https://html-dynamic-tool.vercel.app/api/delete-question/${selectedId}`, {
             method: 'DELETE',
         })
         .then(response => response.json())
@@ -68,13 +68,15 @@ document.getElementById('saveButton').addEventListener('click', () => {
             isPositive: updatedIsPositive
         };
 
+        console.log(updatedQuestion);
+
         // Send updated data to the backend
-        fetch('https://html-dynamic-tool.vercel.app/update-data', {
+        fetch('https://html-dynamic-tool.vercel.app/api/update-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ updatedQuestions: [updatedQuestion] })
+            body: JSON.stringify(updatedQuestion) // <-- Corrected here
         })
         .then(response => response.json())
         .then(result => {
@@ -89,6 +91,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
         alert('Please select a question and fill in the required fields.');
     }
 });
+
 
 // Handle adding new questions
 document.getElementById('add-question-form').addEventListener('submit', function(event) {
@@ -112,7 +115,7 @@ document.getElementById('add-question-form').addEventListener('submit', function
     };
 
     // Send the new question data to the backend
-    fetch('https://html-dynamic-tool.vercel.app/add-question', {
+    fetch('https://html-dynamic-tool.vercel.app/api/add-question', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
