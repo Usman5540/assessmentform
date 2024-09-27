@@ -288,10 +288,33 @@ doc.line(underlineStartX2, underlineY2, underlineEndX2, underlineY2);
   
 //     doc.text(" out of 10", 167, 60);
     // Get today's date 
- const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
+const rater = document.getElementById("Rater").value; // Retrieve the value of the Rater input
 doc.setFontSize(11);
 doc.setTextColor(0, 0, 0);
-doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value into the PDF
+// doc.text(`Rater Name or Identifier: ${rater}`, 10,50); // Add the Rater value into the PDF
+const offset1 = 10;  // Position offset for the text
+const textY = 50;  // Y position for the text
+const underlineY1 = textY + 1; // Y position for the underline, slightly below the text
+
+// Add the text
+doc.text(`Rater Name / Identifier :`, offset1, textY);
+
+const staticTextWidth = doc.getTextWidth('Rater Name / Identifier:');
+const raterX = 17 + staticTextWidth
+doc.text(`${rater}`, raterX, textY);
+// Calculate the width of the text
+ doc.getTextWidth(`Rater Name / Identifier : ${rater}`);
+doc.setLineWidth(0.5);
+// Set the underline start and end positions based on the text width
+const underlineStartX = offset1 +  48;
+const underlineEndX = underlineStartX + 30;  // Extend the underline by 12 units after the text
+
+// Set the color for the underline
+doc.setDrawColor(0, 0, 0);
+
+// Draw the underline after the text
+doc.line(underlineStartX, underlineY1, underlineEndX, underlineY1);
+
     const today = new Date();
     const formattedDate = today.toLocaleDateString("en-US", {
         year: "numeric",
