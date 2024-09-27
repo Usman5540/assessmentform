@@ -379,7 +379,7 @@ doc.setFont("helvetica", "bold");
 
 // Center Subtitle
 const subtitleYPosition = 18;  // Adjust this to move the subtitle higher or lower
-doc.text(subtitle, (pageWidth - subtitleWidth) / 2+10, subtitleYPosition);
+doc.text(subtitle, (pageWidth - subtitleWidth) / 2+8, subtitleYPosition);
 
 
 
