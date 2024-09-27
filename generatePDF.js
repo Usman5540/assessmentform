@@ -246,7 +246,25 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
                 const Identifier = document.getElementById("identifier").value;
                      doc.setTextColor(0, 0, 0);
           doc.setFontSize(11);
-        doc.text(`Provider Name or Identifier: ${Identifier}`, 10, 40);
+      
+const offset2 = 10;  // Position offset for the text
+const textY2 = 40;  // Y position for the text
+const underlineY2 = 41 ; // Y position for the underline, slightly below the text
+
+// Add the text
+doc.text(`Provider Name / Identifier: ${Identifier}`, offset2, textY2);
+// Calculate the width of the text
+const textWidth2 = doc.getTextWidth(`Provider Name / Identifier: ${Identifier}`);
+doc.setLineWidth(0.5);
+// Set the underline start and end positions based on the text width
+const underlineStartX2 = offset2 + 48;
+const underlineEndX2 = underlineStartX2 + 30;  // Extend the underline by 12 units after the text
+
+// Set the color for the underline
+doc.setDrawColor(0, 0, 0);
+
+// Draw the underline after the text
+doc.line(underlineStartX2, underlineY2, underlineEndX2, underlineY2);
 //         const scoreString = document.getElementById("score").innerText;
 //         let score = scoreString.split('is')[1];
 //      doc.setFontSize(16);
