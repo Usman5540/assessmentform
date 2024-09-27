@@ -382,6 +382,7 @@ const subtitleYPosition = 18;  // Adjust this to move the subtitle higher or low
 doc.text(subtitle, (pageWidth - subtitleWidth) / 2, subtitleYPosition);
 
 
+
             // Capture and Add Image from assessmentForm
             html2canvas(document.querySelector("#assessmentForm"),{ scale: 1.5 }).then(canvas => {
                 const imgData = canvas.toDataURL("image/png");
