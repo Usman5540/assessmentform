@@ -115,21 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             form.innerHTML += questionHTML;
         });
-document.getElementById('generatePDFButton').addEventListener('click',generatePDF);
-document.getElementById('submitButton').addEventListener('click', function(event) {
-    // Prevent the default form submission
-    event.preventDefault();
-    // Call the function to calculate score
-    calculateScore();
-      const spinnerElement = document.getElementById("spinner");
-    const elementPosition = spinnerElement.getBoundingClientRect().top + window.scrollY;
+// document.getElementById('generatePDFButton').addEventListener('click',generatePDF);
+// document.getElementById('submitButton').addEventListener('click', function(event) {
+//     // Prevent the default form submission
+//     event.preventDefault();
+//     // Call the function to calculate score
+//     calculateScore();
+//       const spinnerElement = document.getElementById("spinner");
+//     const elementPosition = spinnerElement.getBoundingClientRect().top + window.scrollY;
 
-    window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth' // This adds a smooth scrolling effect
-    });
-});
-// document.getElementById('submitButton').addEventListener('click', calculateScore);
+//     window.scrollTo({
+//         top: elementPosition,
+//         behavior: 'smooth' // This adds a smooth scrolling effect
+//     });
+// });
+// // document.getElementById('submitButton').addEventListener('click', calculateScore);
 
 document.getElementById('submitButton').addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default form submission
