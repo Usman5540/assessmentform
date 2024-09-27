@@ -476,7 +476,7 @@ button:active {
 .radio-value-6 ,
 .radio-value-7
 {
-  margin-top: 15px;
+  margin-top: 0px;
 }
 .radio-value-1 span,
 .radio-value-2 span,
@@ -485,7 +485,7 @@ button:active {
 .radio-value-5 span,
 .radio-value-6 span,
 .radio-value-7 span {
-  margin-top: 15px
+  margin-top: 5px
 }
 
 .radio-value-5 {
