@@ -68,43 +68,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         </tr>
                         <tr>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-1'>
                                     <input type="radio" name="q${questionNumber}" value="1">
                                     <span>${ratingText[1]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-2'>
                                     <input type="radio" name="q${questionNumber}" value="2">
                                     <span>${ratingText[2]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-3'>
                                     <input type="radio" name="q${questionNumber}" value="3">
                                     <span>${ratingText[3]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv  radio-value-4'>
                                     <input type="radio" name="q${questionNumber}" value="4">
                                     <span>${ratingText[4]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-5'>
                                     <input type="radio" name="q${questionNumber}" value="5">
                                     <span>${ratingText[5]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-6'>
                                     <input type="radio" name="q${questionNumber}" value="6">
                                     <span>${ratingText[6]}</span>
                                 </div>
                             </td>
                             <td>
-                                <div class='radioDiv'>
+                                <div class='radioDiv radio-value-7'>
                                     <input type="radio" name="q${questionNumber}" value="7">
                                     <span>${ratingText[7]}</span>
                                 </div>
@@ -115,13 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             form.innerHTML += questionHTML;
         });
-// document.getElementById('generatePDFButton').addEventListener('click',generatePDF);
-// document.getElementById('submitButton').addEventListener('click', function(event) {
-//     // Prevent the default form submission
-//     event.preventDefault();
-//     // Call the function to calculate score
-//     calculateScore();
-// });
+document.getElementById('generatePDFButton').addEventListener('click',generatePDF);
+document.getElementById('submitButton').addEventListener('click', function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+    // Call the function to calculate score
+    calculateScore();
+      const spinnerElement = document.getElementById("spinner");
+    const elementPosition = spinnerElement.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth' // This adds a smooth scrolling effect
+    });
+});
 // document.getElementById('submitButton').addEventListener('click', calculateScore);
 
 document.getElementById('submitButton').addEventListener('click', (event) => {
@@ -143,7 +150,14 @@ document.getElementById('submitButton').addEventListener('click', (event) => {
   
 
     // If both identifiers are filled and form is valid, calculate score
-    calculateScore();
+   calculateScore();
+       const spinnerElement = document.getElementById("spinner");
+    const elementPosition = spinnerElement.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth' // This adds a smooth scrolling effect
+    });
 
       setTimeout(() => {
         document.getElementById('generatePDFButton').style.display = 'inline-block';
@@ -197,12 +211,7 @@ document.getElementById('identifier').addEventListener('click', function() {
 
 function calculateScore() {
     const spinnerElement = document.getElementById("spinner");
-    const elementPosition = spinnerElement.getBoundingClientRect().top + window.scrollY;
 
-    window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth' // This adds a smooth scrolling effect
-    });
 
     // Display the spinner
     spinnerElement.style.display = "block"; // Ensure the spinner is shown
@@ -397,7 +406,6 @@ function calculateScore() {
 
 })       
     }
-
 
 
 
