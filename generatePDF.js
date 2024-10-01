@@ -199,26 +199,7 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
         doc.setFont("helvetica");
 // 
         // Capture the Bar Chart
-        html2canvas(document.querySelector("#chartContainer"), { 
-    scale: 1.5, // Increase scale for better quality
-    useCORS: true, // If needed for external resources like images
-    backgroundColor: null, // Transparent background if needed
-    onclone: (clonedDoc) => {
-        // Increase font size in the cloned document, but with controlled scaling
-        clonedDoc.querySelectorAll('*').forEach(el => {
-            let computedStyle = window.getComputedStyle(el);
-            let fontSize = parseFloat(computedStyle.fontSize); // Get current font size
-
-            // Controlled font size increase with a maximum limit
-            let newFontSize = fontSize * 1.2; // Adjust the multiplier (use 1.2 instead of 1.5)
-            if (newFontSize > 19) { // Set a maximum font size (e.g., 24px)
-                newFontSize = 19;
-            }
-
-            el.style.fontSize = newFontSize + 'px'; // Apply the new font size
-        });
-    }
-}).then(canvas => {
+        html2canvas(document.querySelector("#chartContainer"), {  scale: 1.5 }).then(canvas => {
             const imgWidth = canvas.width;
             const imgHeight = canvas.height;
 
@@ -403,30 +384,7 @@ doc.text(subtitle, (pageWidth - subtitleWidth) / 2+9, subtitleYPosition);
 
 
             // Capture and Add Image from assessmentForm
-            html2canvas(document.querySelector("#assessmentForm"),{ 
-    scale: 1.5, // Increase scale for better quality
-    useCORS: true, // If needed for external resources like images
-    backgroundColor: null, // Transparent background if needed
-    onclone: (clonedDoc) => {
-        // Increase font size and enhance styling for only span elements associated with radio buttons
-        clonedDoc.querySelectorAll('input[type="radio"] + span').forEach(el => {
-            let computedStyle = window.getComputedStyle(el);
-            let fontSize = parseFloat(computedStyle.fontSize); // Get current font size
-
-            // Controlled font size increase
-            let newFontSize = fontSize * 1.2; // Adjust the multiplier (e.g., 1.2)
-            if (newFontSize > 28) { // Set a maximum font size, if needed
-                newFontSize = 28;
-            }
-
-            // Apply enhanced styling for visual clarity
-            el.style.fontSize = newFontSize + 'px'; // Apply the new font size
-            el.style.fontWeight = 'bold'; // Make text bold
-            // el.style.color = '#000000'; // Change text color to black for better contrast
-            // el.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.2)'; // Add a slight text shadow for depth
-        });
-    }
-}).then(canvas => {
+            html2canvas(document.querySelector("#assessmentForm"),{scale: 1.5).then(canvas => {
                 const imgData = canvas.toDataURL("image/png");
                 const imgWidth = canvas.width;
                 const imgHeight = canvas.height;
