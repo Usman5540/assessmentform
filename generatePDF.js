@@ -199,7 +199,26 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
         doc.setFont("helvetica");
 // 
         // Capture the Bar Chart
-        html2canvas(document.querySelector("#chartContainer"), { scale: 1.5 }).then(canvas => {
+        html2canvas(document.querySelector("#chartContainer"), { 
+    scale: 1.5, // Increase scale for better quality
+    useCORS: true, // If needed for external resources like images
+    backgroundColor: null, // Transparent background if needed
+    onclone: (clonedDoc) => {
+        // Increase font size in the cloned document, but with controlled scaling
+        clonedDoc.querySelectorAll('*').forEach(el => {
+            let computedStyle = window.getComputedStyle(el);
+            let fontSize = parseFloat(computedStyle.fontSize); // Get current font size
+
+            // Controlled font size increase with a maximum limit
+            let newFontSize = fontSize * 1.2; // Adjust the multiplier (use 1.2 instead of 1.5)
+            if (newFontSize > 19) { // Set a maximum font size (e.g., 24px)
+                newFontSize = 19;
+            }
+
+            el.style.fontSize = newFontSize + 'px'; // Apply the new font size
+        });
+    }
+}).then(canvas => {
             const imgWidth = canvas.width;
             const imgHeight = canvas.height;
 
