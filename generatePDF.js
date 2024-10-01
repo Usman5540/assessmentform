@@ -209,7 +209,7 @@ doc.roundedRect(boxX, boxY, boxWidth, boxHeight, boxRadius, boxRadius, 'D'); // 
             let startCropY = 0; // Initial start point for cropping
 
             // Function to crop and add image to PDF
-            const addImageToPDF = (startY, height, yPos, scale = 7) => {
+            const addImageToPDF = (startY, height, yPos, scale = 10) => {
                 if (height <= 0) return; // No more content to add
 
                 const croppedCanvas = document.createElement('canvas');
